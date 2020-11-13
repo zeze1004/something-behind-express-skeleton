@@ -26,7 +26,7 @@ function dbSync() {
 
 const express = require('express');
 const app = express();
-const PORT = 5000;
+const PORT = 1004;
 
 app.get('/', (req, res) => {
 	console.log('GET\t/');
