@@ -76,3 +76,14 @@ app.listen(PORT, () => {
 	console.log('Something behind... you have to implement this...!');
 	console.log(`Server is running and listening on port ${PORT}!`);
 });
+
+// onload() 테스트
+var xmlhttp = new XMLHttpRequest(),
+  method = 'GET',
+  url = 'https://developer.mozilla.org/';
+
+xmlhttp.open(method, url, true);
+xmlhttp.onload = function () {
+  // Do something with the retrieved data ( found in xmlhttp.response )
+};
+xmlhttp.send();
