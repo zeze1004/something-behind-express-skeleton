@@ -1,24 +1,16 @@
-// ************************************************************************** //
-//                                                                            //
-//                                                        :::      ::::::::   //
-//   app.js                                             :+:      :+:    :+:   //
-//                                                    +:+ +:+         +:+     //
-//   By: hyechoi <hyechoi@student.42seoul.kr>       +#+  +:+       +#+        //
-//                                                +#+#+#+#+#+   +#+           //
-//   Created: 2020/11/10 15:30:36 by hyechoi           #+#    #+#             //
-//   Updated: 2020/11/10 16:01:31 by hyechoi          ###   ########.fr       //
-//                                                                            //
-// ************************************************************************** //
 
 /*
 **	fs module
 **	http://nodejs.org/api/fs.html
 **	file system.
 */
-const fs = require('fs');
-var dbFile = 'db.json';
-var dbDataBuffer = fs.readFileSync(dbFile);
-var dbJSON = dbDataBuffer.toString();
+const fs = require('fs')
+var dbFile = 'db.json'
+var dbDataBuffer = fs.readFileSync(dbFile)
+var dbJSON = dbDataBuffer.toString()
+// use도 http method???
+app.use(express.json())
+// JSON.parse() 메서드는 json문자열의 구문 분석 결과를 javascript 값이나 객체 생성
 
 function dbSync() {
 	fs.writeFileSync(dbFile, dbJSON);
