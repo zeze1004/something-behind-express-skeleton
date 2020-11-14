@@ -4,6 +4,9 @@
 **	http://nodejs.org/api/fs.html
 **	file system.
 */
+const express = require('express');
+const app = express();
+const PORT = 1004;
 const fs = require('fs')
 var dbFile = 'db.json'
 var dbDataBuffer = fs.readFileSync(dbFile)
@@ -16,9 +19,7 @@ function dbSync() {
 	fs.writeFileSync(dbFile, dbJSON);
 }
 
-const express = require('express');
-const app = express();
-const PORT = 1004;
+
 
 app.get('/', (req, res) => {
 	console.log('GET\t/');
@@ -69,13 +70,3 @@ app.listen(PORT, () => {
 	console.log(`Server is running and listening on port ${PORT}!`);
 });
 
-// onload() 테스트
-var xmlhttp = new XMLHttpRequest(),
-  method = 'GET',
-  url = 'https://developer.mozilla.org/';
-
-xmlhttp.open(method, url, true);
-xmlhttp.onload = function () {
-  // Do something with the retrieved data ( found in xmlhttp.response )
-};
-xmlhttp.send();
