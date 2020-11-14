@@ -11,39 +11,43 @@ const key = { // db가 없으므로 변수로 관리
     uuid: 'e1c5ad36-1f37-492c-9e76-533b3b5a581b'
 }
 
-app.get('/api/users/:apikey/:type', async (req, res) => { // :이 있는 paht는 어떤 값이든 받을 수 있다
-    let {
-        apiKey,
-        type
-    } = req.params
-    console.log(type)
-    if(type == 'seoul') {
-        let data = [
-            // 예) 디비에 있는 서울새럼 정보
-            {
-                name:"홍길동" , 
-                city: "seoul",
-            },
-            {
-                name:"홍길순" ,
-                city: "seoul",
-            }
-        ]
-        res.send(data)
-    } else if(type == 'jeju') {
-        let data = [
-            // 디비에 있는 서울새럼 정보
-            {
-                name:"뾰로롱" , 
-                city: "jeju"
-            },
-            {
-                name:"큐큐큐" , 
-                city: "jeju"
-            }
-        ]
-        res.send(data)
-    } else {
-        res.send('type is not correct')
-    }
-})
+if(!uuidAPIkey.isAPIkey(apiKey) || !uuidAPIkey.check(apiKey, key.uuid)) { // true가 아닐 시
+    res.send('apikey is not valid')
+} else {    // key와 uuid가 맞았을 시
+        app.get('/api/users/:apikey/:type', async (req, res) => { // :이 있는 paht는 어떤 값이든 받을 수 있다
+        let {
+            apiKey,
+            type
+        } = req.params
+        console.log(type)
+        if(type == 'seoul') {
+            let data = [
+                // 예) 디비에 있는 서울새럼 정보
+                {
+                    name:"홍길동" , 
+                    city: "seoul",
+                },
+                {
+                    name:"홍길순" ,
+                    city: "seoul",
+                }
+            ]
+            res.send(data)
+        } else if(type == 'jeju') {
+            let data = [
+                // 디비에 있는 서울새럼 정보
+                {
+                    name:"뾰로롱" , 
+                    city: "jeju"
+                },
+                {
+                    name:"큐큐큐" , 
+                    city: "jeju"
+                }
+            ]
+            res.send(data)
+        } else {
+            res.send('type is not correct')
+        }
+    })
+}
