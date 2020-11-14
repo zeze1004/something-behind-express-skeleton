@@ -5,6 +5,7 @@
     "mysql": "^2.18.1",
     "nodemailer": "^6.4.16",
     "nodemon": "^2.0.6",
+    "postman": "^0.2.0",
     "xmlhttprequest": "^1.8.0"
   }
 }
