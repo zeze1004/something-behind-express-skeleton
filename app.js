@@ -4,9 +4,10 @@
 **	http://nodejs.org/api/fs.html
 **	file system.
 */
+const { json } = require('express');
 const express = require('express');
 const app = express();
-const PORT = 1004;
+const PORT = 1000;
 const fs = require('fs')
 var dbFile = 'db.json'
 var dbDataBuffer = fs.readFileSync(dbFile)
@@ -14,7 +15,7 @@ var dbJSON = dbDataBuffer.toString()
 // use도 http method???
 app.use(express.json())
 // JSON.parse() 메서드는 json문자열의 구문 분석 결과를 javascript 값이나 객체 생성
-
+const data = JSON.parse(dbJSON) 
 function dbSync() {
 	fs.writeFileSync(dbFile, dbJSON);
 }
@@ -39,11 +40,21 @@ app.get('/todos/', (req, res) => {
 ** POST /todos/
 */
 
-app.post('/todos/', (req, res) => {
+app.post('/todos/:content', (req, res) => {
+	var content = req.params
 	console.log('POST\t/todos/');
-	res.send('Implement this!');
+	// dbJSON.content ='종강하기'
+	// var content = req.body.content
+	// var id = req.body.id
+	// var completed = req.body.completed
+	console.log('post request')
+	for(var i in content) {
+		console.log(content[i])
+	}
+	
+})
 	// Implement this!
-});
+
 
 /*
 **	PATCH /todos/:todo_id
