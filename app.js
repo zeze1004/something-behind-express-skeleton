@@ -4,7 +4,7 @@
 **	http://nodejs.org/api/fs.html
 **	file system.
 */
-const i = 3
+
 const { Console, error } = require('console');
 const { json } = require('express');
 const express = require('express');
@@ -63,10 +63,7 @@ app.post('/todos/:content', (req, res) => {
 	result["todos"] = data.todos[i]
 	res.send(result)
 	console.log('POST\t/todos/');
-	// dbJSON.content ='종강하기'
-
 })
-	// Implement this!
 
 
 /*
@@ -96,8 +93,32 @@ app.patch('/todos/:todo_id', (req, res) => {
 
 app.delete('/todos/:todo_id', (req, res) => {
 	console.log('DELETE\t/todos/');
-	res.send(req.params.todo_id + ' Implement this!');
-	// Implement this!
+	let {
+		todo_id 
+	} = req.params
+	req.body = data
+
+	for(var i in data.todos) {
+		// console.log(data.todos[i].id)
+		if(todo_id == data.todos[i].id) {
+			delete data.todos[i]
+			res.send({
+				"success" : true
+			})
+		} 
+	} res.send('없는 id입니다')
+/*
+	for(var i in data.todos) {
+		if(todo_id == data.todos[i].id) {
+			console.log(data.todos[i])
+			delete data.todos[i]
+			fs.writeFileSync(dbFile,JSON.stringify(data))
+			res.send({
+				"success" : true
+			})
+		} 
+	} res.send('없는 id입니다')
+*/
 });
 
 app.listen(PORT, () => {
