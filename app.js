@@ -23,7 +23,6 @@ function dbSync() {
 }
 
 
-
 app.get('/', (req, res) => {
 	console.log('GET\t/');
 	res.send('HELLo World!');
@@ -34,10 +33,6 @@ app.get('/', (req, res) => {
 */
 
 app.get('/todos/', (req, res) => {
-	//console.log('GET\t/todos/');
-	// for(var i in Object.keys(data.todos).length) {
-	// 	res.send(data.todo[i]);
-	// }
 	res.json(data);
 });
 
@@ -65,7 +60,6 @@ app.post('/todos/:content', (req, res) => {
 	console.log('POST\t/todos/');
 })
 
-
 /*
 **	PATCH /todos/:todo_id
 */
@@ -84,7 +78,6 @@ app.patch('/todos/:todo_id', (req, res) => {
 			res.send(data.todos[i])
 		} 
 	} res.send('없는 id입니다')
-
 });
 
 /*
@@ -107,18 +100,6 @@ app.delete('/todos/:todo_id', (req, res) => {
 			})
 		} 
 	} res.send('없는 id입니다')
-/*
-	for(var i in data.todos) {
-		if(todo_id == data.todos[i].id) {
-			console.log(data.todos[i])
-			delete data.todos[i]
-			fs.writeFileSync(dbFile,JSON.stringify(data))
-			res.send({
-				"success" : true
-			})
-		} 
-	} res.send('없는 id입니다')
-*/
 });
 
 app.listen(PORT, () => {
