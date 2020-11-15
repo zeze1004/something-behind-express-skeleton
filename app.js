@@ -51,7 +51,8 @@ app.post('/todos/:content', (req, res) => {
 	} = req.params
 	var result = {}
 	// i = dbJSON.todos의 key 개수
-	const i = Object.keys(data.todos).length
+	// const i = Object.keys(data.todos).length
+	const i = data.todos.length
 	data.todos[i] = {
 		"id" : i+1,
 		"content" : content,
@@ -78,29 +79,15 @@ app.patch('/todos/:todo_id', (req, res) => {
 	} = req.params
 	req.body = data
 	console.log('PATCH\t/todos/');
-	// console.log(req.body)
-	//console.log(data.todos)
-
-	var result = {}
-
-	// for(var i in data.todos) {
-	// 	console.log(data.todos[i].id)
-	// }
 
 	for(var i in data.todos) {
-		console.log(data.todos[i].id)
-	}
+		// console.log(data.todos[i].id)
+		if(todo_id == data.todos[i].id) {
+			console.log(data.todos[i])
+			res.send(data.todos[i])
+		} 
+	} res.send('없는 id입니다')
 
-	// for(var i in Object.keys(data.todos).length) {
-	// 	if(data.todo[i] == todo_id) {
-	// 		res.send("출력" + ' Implement this!');
-	// 	} else res.send('없는 값입니다')
-	// }
-
-
-
-	
-	// Implement this!
 });
 
 /*
