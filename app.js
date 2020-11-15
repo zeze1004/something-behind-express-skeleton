@@ -5,7 +5,7 @@
 **	file system.
 */
 const i = 3
-const { Console } = require('console');
+const { Console, error } = require('console');
 const { json } = require('express');
 const express = require('express');
 const app = express();
@@ -35,6 +35,9 @@ app.get('/', (req, res) => {
 
 app.get('/todos/', (req, res) => {
 	//console.log('GET\t/todos/');
+	// for(var i in Object.keys(data.todos).length) {
+	// 	res.send(data.todo[i]);
+	// }
 	res.json(data);
 });
 
@@ -74,8 +77,23 @@ app.patch('/todos/:todo_id', (req, res) => {
 		todo_id 
 	} = req.params
 	console.log('PATCH\t/todos/');
-	data.todos.id
-	res.send(req.params.todo_id + ' Implement this!');
+	for(var i in Object.keys(data.todos).length) {
+		console.log(data.todo[i]);
+	}
+	var result = {}
+	// try {
+	// 	for(var i in Object.keys(data.todos).length) {
+	// 		if(i == todo_id == data.todo.id) {
+	// 			res.send("출력" + ' Implement this!');
+	// 		} else console.log('앙대')
+	// 	}
+	// }
+	// catch {
+	// 	res.send('없는 id 값 입니다.')
+	// 	throw "없는 id 값 입니다."
+	// }
+
+	
 	// Implement this!
 	console.log('PATCH\t/todos/');
 });
