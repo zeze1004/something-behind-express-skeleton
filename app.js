@@ -77,21 +77,21 @@ app.patch('/todos/:todo_id', (req, res) => {
 		todo_id 
 	} = req.params
 	console.log('PATCH\t/todos/');
-	for(var i in Object.keys(data.todos).length) {
-		console.log(data.todo[i]);
-	}
+	//console.log(data.todos)
+
 	var result = {}
-	// try {
-	// 	for(var i in Object.keys(data.todos).length) {
-	// 		if(i == todo_id == data.todo.id) {
-	// 			res.send("출력" + ' Implement this!');
-	// 		} else console.log('앙대')
-	// 	}
+
+	for(var i in Object.keys(data.todos).length) {
+		console.log(data.todos[i][0])
+	}
+
+	// for(var i in Object.keys(data.todos).length) {
+	// 	if(data.todo[i] == todo_id) {
+	// 		res.send("출력" + ' Implement this!');
+	// 	} else res.send('없는 값입니다')
 	// }
-	// catch {
-	// 	res.send('없는 id 값 입니다.')
-	// 	throw "없는 id 값 입니다."
-	// }
+
+
 
 	
 	// Implement this!
