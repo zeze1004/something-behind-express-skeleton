@@ -4,6 +4,8 @@
 **	http://nodejs.org/api/fs.html
 **	file system.
 */
+const i = 3
+const { Console } = require('console');
 const { json } = require('express');
 const express = require('express');
 const app = express();
@@ -33,7 +35,7 @@ app.get('/', (req, res) => {
 
 app.get('/todos/', (req, res) => {
 	//console.log('GET\t/todos/');
-	res.json(dbJSON);
+	res.json(data);
 });
 
 /*
@@ -41,14 +43,24 @@ app.get('/todos/', (req, res) => {
 */
 
 app.post('/todos/:content', (req, res) => {
-	let content = req.params
-	console.log('content')
-	res.send(dbJSON)
+	let {
+		content
+	} = req.params
+	var result = {}
+	// i = dbJSON.todos의 key 개수
+	const i = Object.keys(data.todos).length
+	data.todos[i] = [{
+		"id" : i+1,
+		"content" : content,
+		"completed" : false
+	}]
+	fs.writeFileSync(dbFile,JSON.stringify(data)); // dbJSON에 기록
+	result["success"] = 1; 
+	result["todos"] = data.todos[i]
+	res.send(result)
 	console.log('POST\t/todos/');
 	// dbJSON.content ='종강하기'
-	// var content = req.body.content
-	// var id = req.body.id
-	// var completed = req.body.completed
+
 })
 	// Implement this!
 
@@ -58,9 +70,14 @@ app.post('/todos/:content', (req, res) => {
 */
 
 app.patch('/todos/:todo_id', (req, res) => {
+	let {
+		todo_id 
+	} = req.params
 	console.log('PATCH\t/todos/');
+	data.todos.id
 	res.send(req.params.todo_id + ' Implement this!');
 	// Implement this!
+	console.log('PATCH\t/todos/');
 });
 
 /*
