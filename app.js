@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 */
 
 app.get('/todos/', (req, res) => {
-	console.log('GET\t/todos/');
+	//console.log('GET\t/todos/');
 	res.json(dbJSON);
 });
 
@@ -41,17 +41,14 @@ app.get('/todos/', (req, res) => {
 */
 
 app.post('/todos/:content', (req, res) => {
-	var content = req.params
+	let content = req.params
+	console.log('content')
+	res.send(dbJSON)
 	console.log('POST\t/todos/');
 	// dbJSON.content ='종강하기'
 	// var content = req.body.content
 	// var id = req.body.id
 	// var completed = req.body.completed
-	console.log('post request')
-	for(var i in content) {
-		console.log(content[i])
-	}
-	
 })
 	// Implement this!
 
