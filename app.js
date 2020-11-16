@@ -14,7 +14,7 @@ const fs = require('fs')
 var dbFile = 'db.json'
 var dbDataBuffer = fs.readFileSync(dbFile)
 var dbJSON = dbDataBuffer.toString()
-// use도 http method???
+
 app.use(express.json())
 // JSON.parse() 메서드는 json문자열의 구문 분석 결과를 javascript 값이나 객체 생성
 const data = JSON.parse(dbJSON) 
